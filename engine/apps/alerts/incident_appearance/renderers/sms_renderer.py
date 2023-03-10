@@ -18,6 +18,11 @@ class AlertGroupSmsRenderer(AlertGroupBaseRenderer):
     def render(self):
         templated_alert = self.alert_renderer.templated_alert
         title = str_or_backup(templated_alert.title, DEFAULT_BACKUP_TITLE)
+
+        if self.alert_group.is_restricted:
+            # TODO: update this text
+            return "RESTRICTED TODO TODO"
+
         if self.alert_group.channel.organization.slack_team_identity and (
             permalink := self.alert_group.slack_permalink
         ):

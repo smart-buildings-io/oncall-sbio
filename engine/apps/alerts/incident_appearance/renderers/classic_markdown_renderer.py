@@ -10,13 +10,16 @@ class AlertClassicMarkdownRenderer(AlertBaseRenderer):
 
     def render(self):
         templated_alert = self.templated_alert
-        rendered_alert = {
-            "title": str_or_backup(templated_alert.title, "Alert"),
-            "message": str_or_backup(templated_alert.message, ""),
-            "image_url": str_or_backup(templated_alert.image_url, None),
-            "source_link": str_or_backup(templated_alert.source_link, None),
+        is_restricted = self.alert.group.is_restricted
+
+        # TODO: update these..
+        is_restricted_msg = "RESTRICTED TODO TODO"
+        return {
+            "title": is_restricted_msg if is_restricted else str_or_backup(templated_alert.title, "Alert"),
+            "message": is_restricted_msg if is_restricted else str_or_backup(templated_alert.message, ""),
+            "image_url": None if is_restricted else str_or_backup(templated_alert.image_url, None),
+            "source_link": None if is_restricted else str_or_backup(templated_alert.source_link, None),
         }
-        return rendered_alert
 
 
 class AlertGroupClassicMarkdownRenderer(AlertGroupBaseRenderer):

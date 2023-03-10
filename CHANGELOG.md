@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Modified `check_escalation_finished_task` celery task to use read-only databases for its query, if one is defined +
   make the validation logic stricter + ping a configurable heartbeat on successful completion of this task ([1266](https://github.com/grafana/oncall/pull/1266))
+- add new columns `gcom_org_contract_type` and `gcom_org_has_irm_sku` to `user_management_organization` table +
+  `is_restricted` column to `alerts_alertgroup` table ([1522](https://github.com/grafana/oncall/pull/1522))
+- emit two new Django signals ([1522](https://github.com/grafana/oncall/pull/1522))
+  - `org_sync_signal` at the end of the `engine/apps/user_management/sync.py::sync_organization` method
+  - `alert_group_created_signal` when a new Alert Group is created
 
 ### Changed
 

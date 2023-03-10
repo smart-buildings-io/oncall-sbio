@@ -62,6 +62,7 @@ class AlertSlackRenderer(AlertBaseRenderer):
         return attachments
 
 
+# TODO:
 class AlertGroupSlackRenderer(AlertGroupBaseRenderer):
     def __init__(self, alert_group):
         super().__init__(alert_group)

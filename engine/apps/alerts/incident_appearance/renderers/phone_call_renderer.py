@@ -24,10 +24,12 @@ class AlertGroupPhoneCallRenderer(AlertGroupBaseRenderer):
         templated_alert = self.alert_renderer.templated_alert
         title = str_or_backup(templated_alert.title, DEFAULT_BACKUP_TITLE)
 
-        text = self.TEMPLATE.format(
+        if self.alert_group.is_restricted:
+            # TODO: update this text
+            return "RESTRICTED TODO TODO"
+
+        return self.TEMPLATE.format(
             integration_name=self.alert_group.channel.short_name,
             title=title,
             alert_count=self.alert_group.alerts.count(),
         )
-
-        return text
