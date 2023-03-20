@@ -381,4 +381,6 @@ class Users extends React.Component<UsersProps, UsersState> {
   };
 }
 
+export { Users };
+
 export default withRouter(withMobXProviderContext(Users));
