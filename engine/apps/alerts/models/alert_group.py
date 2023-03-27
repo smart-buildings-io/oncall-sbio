@@ -241,9 +241,9 @@ class AlertGroup(AlertGroupSlackRenderingMixin, EscalationSnapshotMixin, models.
         (3600, "1 hour"),
         (14400, "4 hours"),
         (43200, "12 hours"),
-        (57600, "16 hours"),
-        (72000, "20 hours"),
         (86400, "24 hours"),
+        (172800, "2 days"),
+        (604800, "7 days"),
         (-1, "Forever"),
     )
     silenced = models.BooleanField(default=False)
