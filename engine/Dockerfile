@@ -16,7 +16,7 @@ RUN pip install -r requirements.txt
 # we intentionally have two COPY commands, this is to have the requirements.txt in a separate build step
 # which only invalidates when the requirements.txt actually changes. This avoids having to unneccasrily reinstall deps (which is time-consuming)
 # https://stackoverflow.com/questions/34398632/docker-how-to-run-pip-requirements-txt-only-if-there-was-a-change/34399661#34399661
-COPY ./ ./
+# COPY ./ ./
 
 # Collect static files and create an SQLite database
 RUN mkdir -p /var/lib/oncall
@@ -30,8 +30,8 @@ RUN chown -R 1000:2000 /tmp/silk_profiles
 FROM base AS dev
 RUN apt-get install -y sqlite3 default-mysql-client postgresql-client
 
-FROM dev AS dev-enterprise
-RUN pip install -r requirements-enterprise-docker.txt
+# FROM dev AS dev-enterprise
+# RUN pip install -r requirements-enterprise-docker.txt
 
 FROM base AS prod
 
