@@ -11,4 +11,5 @@ jobs:
         name: sbdtgord/oncall
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        dockerfile: engine/Dockerfile
+        workdir: engine
+#         dockerfile: engine/Dockerfile
