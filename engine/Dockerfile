@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     bash
 
 WORKDIR /etc/app
-COPY ./requirements.txt ./
+COPY ./ ./
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
